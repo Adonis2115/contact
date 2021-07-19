@@ -5,8 +5,7 @@ const Contact = require("../models/contact")
 
 router.use(bodyParser)
 
-router.post('/', (req,res) => {
-    console.log(req.body)
+router.post('/add', (req,res) => {
     const newContact = new Contact({
         name : req.body.name,
         email : req.body.email,
