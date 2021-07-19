@@ -5,18 +5,27 @@ const Contact = require("../models/contact")
 
 router.use(bodyParser)
 
-router.post('/add', (req,res) => {
+router.post('/add', async (req,res) => {
     const newContact = new Contact({
         name : req.body.name,
         email : req.body.email,
         phone : req.body.phone
     })
     try{
-     newContact.save()
-     console.log("Hello")
+     await newContact.save()
+     res.sendStatus(200)
     }
     catch(err){
         console.log(err)
+    }
+})
+
+router.get('/list', async (req,res) => {
+    try{
+        const allContact = await Contact.find()
+        res.send(allContact)
+    } catch (e) {
+        res.status(500).send(e)
     }
 })
 
