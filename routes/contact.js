@@ -45,4 +45,29 @@ router.get('/read/:id', async (req,res) => {
     }
 })
 
+router.patch("/update/:id", async (req,res)=>{
+    const {id} = req.params;
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['name', 'phone', 'email']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+    if(!isValidOperation){
+        return res.status(400).send({error: 'Invalid Updates'})
+    }
+    try {
+        const updateContact = await Contact.findById(id)
+        if(!updateContact){
+            return res.status(404).send("No Contact Found")
+        }  
+        else{
+            updates.forEach((update) => updateContact[update] = req.body[update])
+            await updateContact.save()
+            res.send(updateContact)
+        }
+    }
+    catch(err) {
+        res.status(400).send(err)
+    }
+})
+
+
 module.exports = router
