@@ -69,5 +69,16 @@ router.patch("/update/:id", async (req,res)=>{
     }
 })
 
+router.delete('/delete/:id', async (req,res) =>{
+    try{
+        const deleteContact = await Contact.findOneAndDelete({_id: req.params.id})
+        if(!deleteContact){
+            return res.status(404).send("No Contact Found")
+        }
+        res.send(deleteContact)
+    } catch (e){
+        res.status(500).send(e)
+    }
+})
 
 module.exports = router
