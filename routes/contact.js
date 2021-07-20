@@ -13,7 +13,7 @@ router.post('/add', async (req,res) => {
     })
     try{
      await newContact.save()
-     res.sendStatus(200)
+     res.status(200).send(newContact)
     }
     catch(err){
         console.log(err)
@@ -23,7 +23,7 @@ router.post('/add', async (req,res) => {
 router.get('/list', async (req,res) => {
     try{
         const allContact = await Contact.find()
-        res.send(allContact)
+        res.status(200).send(allContact)
     } catch (e) {
         res.status(500).send(e)
     }
@@ -75,7 +75,7 @@ router.delete('/delete/:id', async (req,res) =>{
         if(!deleteContact){
             return res.status(404).send("No Contact Found")
         }
-        res.send(deleteContact)
+        res.status(200).send(deleteContact)
     } catch (e){
         res.status(500).send(e)
     }
