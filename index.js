@@ -15,6 +15,8 @@ app.use(Contact)
 //connection to db
 mongoose.set("useFindAndModify", false)
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
-console.log("Connected to db!");
+console.log(process.env.DB_CONNECT);
 app.listen(3000, () => console.log("Server Up and running"));
 });
+
+module.exports = app
