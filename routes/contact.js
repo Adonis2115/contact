@@ -29,4 +29,21 @@ router.get('/list', async (req,res) => {
     }
 })
 
+// make a params request
+router.post('/read', async (req,res) => {
+    try{
+        const id = req.body.id
+        const oneContact = await Contact.findById(id)
+        if(!oneContact){
+            res.status(404).send("No Contact")
+        }
+        else {
+            res.send(oneContact)
+        }
+    } catch (e) {
+        console.log(e)
+        res.status(500).send(e)
+    }
+})
+
 module.exports = router
