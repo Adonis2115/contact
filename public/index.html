@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Contact</title>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<div class="navbar">
+    <a class="active" href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+    <a href="#"><i class="fa fa-fw fa-user-plus"></i> Signup</a> 
+    <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+    <a href="#"><i class="fa fa-fw fa-sign-out"></i> Logout</a> 
+</div>
+
+<div>
+    <form class="login-container">
+        <a><input type="email" placeholder="Name"></a>
+        <a><input type="phone" placeholder="Phone"></a>
+        <a><input type="email" placeholder="Email"></a>
+        <a><input type="submit" value="Log in"></a>
+    </form>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/contact.js"></script>
 
 </body>
-</html>
+</html> 
